@@ -14,15 +14,22 @@ const generateCardNode = (data) => {
     jobTitle,
     companyName,
     post,
+    publishDate,
+    city,
+    state
   } = data;
   const templateId = "profile-post-item-template";
   const resultCardTemplate = document.getElementById(templateId);
   const clone = document.importNode(resultCardTemplate.content, true);
+  const publishDisplayDate = clone.querySelector(".page-date");
+  const location = clone.querySelector(".page-location");
   const authorName = clone.querySelector(".post-author-info .page-paragraph");
   const jobDesc = clone.querySelector(".post-author-info .page-micro");
   const postNode = clone.querySelector(".post-content");
   const avatarNode = clone.querySelector(".post-author-avatar");
 
+  location.innerHTML = `${city}, ${state}`;
+  publishDisplayDate.innerHTML = `${publishDate}`;
   authorName.innerHTML = `${authorFirstName} ${authorLastName}`;
   jobDesc.innerHTML = `${jobTitle} @ ${companyName}`;
   postNode.innerHTML = post;
