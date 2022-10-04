@@ -29,7 +29,7 @@ const generateCardNode = (data) => {
   const avatarNode = clone.querySelector(".post-author-avatar");
 
   location.innerHTML = `${city}, ${state}`;
-  publishDisplayDate.innerHTML = `${publishDate}`;
+  publishDisplayDate.innerHTML = `${publishDate.split("T")[0]}`;
   authorName.innerHTML = `${authorFirstName} ${authorLastName}`;
   jobDesc.innerHTML = `${jobTitle} @ ${companyName}`;
   postNode.innerHTML = post;
