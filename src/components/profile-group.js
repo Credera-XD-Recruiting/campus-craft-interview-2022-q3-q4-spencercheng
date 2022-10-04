@@ -13,7 +13,7 @@ const activityStates = {
  * @return {Node} generated markup for a card
  */
 const generateCardNode = (data) => {
-  const { name, href, image } = data;
+  const { name, href, image, activity } = data;
   const templateId = "profile-group-results-item-template";
   const resultCardTemplate = document.getElementById(templateId);
   const clone = document.importNode(resultCardTemplate.content, true);
@@ -22,6 +22,26 @@ const generateCardNode = (data) => {
   const groupImageNode = clone.querySelector(
     "a.profile-group-results-card img"
   );
+  const groupNode = clone.querySelector(
+    "a.profile-group-results-card.content-card.fade-in"
+  );
+
+  // activity colors
+  switch(activity) {
+    case 'active':
+      groupNode.setAttribute('style', 'background-color:#52C1AD');
+      break;
+    case 'moderate':
+      groupNode.setAttribute('style', 'background-color:#58B1C9');
+      break;
+    case 'low':
+      groupNode.setAttribute('style', 'background-color:#C152A2');
+      break;
+    case 'inactive':
+      groupNode.setAttribute('style', 'background-color:#C4C4C4');
+      break;
+  }
+
 
   titleNode.innerHTML = `${name}`;
   referenceNode.href = href;
