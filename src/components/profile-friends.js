@@ -31,21 +31,17 @@ const generateListItemNode = (data) => {
     avatarImg.src = avatarSrc;
     avatarImg.setAttribute("aria-label", `${name}`);
     avatarNode.appendChild(avatarImg);
-   } 
+   } else {
+    const names = name.split(' ');
+    var initials = names[0].substring(0, 1).toUpperCase() + names[1].substring(0, 1).toUpperCase();
 
-  // else {
-  //   const names = name.split(' ');
-  //   console.log(typeof names);
-  //   var initials = names[0].substring(0, 1).toUpperCase();
-    
-  //   console.log(initials);
-  //   var names2 = toString(names);
-    
-  //   if(Object.keys(names).length() > 1) {
-  //     initials += names[Object.keys(names).length() - 1].substring(0, 1).toUpperCase;
-  //   }
-  //   avatarImg.setAttribute("aria-label",  `${initials}`)
-  // }
+    console.log(initials);
+
+    const avatarImg = document.createElement("div");
+    avatarImg.textContent = `${initials}`;
+    avatarNode.appendChild(avatarImg);
+    avatarImg.setAttribute("style",  "text-align: center; font-size: 4vh; color: white; margin-top:2vh;")
+  }
 
   return clone;
 };
