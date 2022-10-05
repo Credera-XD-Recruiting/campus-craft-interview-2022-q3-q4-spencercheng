@@ -31,7 +31,21 @@ const generateListItemNode = (data) => {
     avatarImg.src = avatarSrc;
     avatarImg.setAttribute("aria-label", `${name}`);
     avatarNode.appendChild(avatarImg);
-  }
+   } 
+
+  // else {
+  //   const names = name.split(' ');
+  //   console.log(typeof names);
+  //   var initials = names[0].substring(0, 1).toUpperCase();
+    
+  //   console.log(initials);
+  //   var names2 = toString(names);
+    
+  //   if(Object.keys(names).length() > 1) {
+  //     initials += names[Object.keys(names).length() - 1].substring(0, 1).toUpperCase;
+  //   }
+  //   avatarImg.setAttribute("aria-label",  `${initials}`)
+  // }
 
   return clone;
 };
@@ -46,6 +60,12 @@ export const generateFriendsListFromTemplate = (resultsData) => {
   const friendsListSection = document.querySelector(
     "#profile-friends .profile-friends-list"
   );
+  
+  resultsData.friends.sort(function (x, y) {
+    if (x.topFriend === y.topFriend) {
+        return x.name.split(" ")[1].localeCompare(y.name.split(" ")[1]);
+    } return x.topFriend ? -1 : 1
+  });
 
   if (resultsData.friends && resultsData.friends.length > 0) {
     removeChildNodes(friendsListSection);
