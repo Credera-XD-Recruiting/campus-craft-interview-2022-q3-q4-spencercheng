@@ -1,5 +1,5 @@
 import { removeChildNodes } from "../utils";
-
+import underlineSrc from "../assets/icons8-heart-30.png";
 const activityStates = {
   active: "active",
   inactive: "inactive",
@@ -13,7 +13,7 @@ const activityStates = {
  * @return {Node} generated markup for a card
  */
 const generateCardNode = (data) => {
-  const { name, href, image, activity } = data;
+  const { name, href, image, activity,favorite} = data;
   const templateId = "profile-group-results-item-template";
   const resultCardTemplate = document.getElementById(templateId);
   const clone = document.importNode(resultCardTemplate.content, true);
@@ -25,6 +25,17 @@ const generateCardNode = (data) => {
   const groupNode = clone.querySelector(
     "a.profile-group-results-card.content-card.fade-in"
   );
+  const favoriteNode = clone.querySelector(
+    ".profile-group-content"
+  );
+
+  if (favorite) {
+    const avatarImg = document.createElement("img", "div");
+    avatarImg.src = underlineSrc;
+    avatarImg.setAttribute("z-index", "1000");
+    avatarImg.setAttribute("height", "30px");
+    favoriteNode.appendChild(avatarImg);
+  }
 
   // activity colors
   switch(activity) {
