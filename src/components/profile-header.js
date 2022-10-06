@@ -30,7 +30,7 @@ export const updateProfileInformation = (data) => {
     const avatarImg = document.createElement("div");
     avatarImg.textContent = `${initials}`;
     profileNameNode.appendChild(avatarImg);
-    avatarImg.setAttribute("style",  "text-align: center; font-size: 4vh; color: white; margin-top:3vh;")
+    avatarImg.setAttribute("style",  "text-align: center; font-size: 14vh; color: white; margin-top:5vh;")
   
   }
 

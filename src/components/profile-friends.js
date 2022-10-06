@@ -40,7 +40,7 @@ const generateListItemNode = (data) => {
     const avatarImg = document.createElement("div");
     avatarImg.textContent = `${initials}`;
     avatarNode.appendChild(avatarImg);
-    avatarImg.setAttribute("style",  "text-align: center; font-size: 4vh; color: white; margin-top:3vh;")
+    avatarImg.setAttribute("style",  "text-align: center; font-size: 4vh; color: white; margin-top:3.5vh;")
   }
 
   return clone;
