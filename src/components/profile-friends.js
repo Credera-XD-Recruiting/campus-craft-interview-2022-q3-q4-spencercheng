@@ -34,9 +34,6 @@ const generateListItemNode = (data) => {
    } else {
     const names = name.split(' ');
     var initials = names[0].substring(0, 1).toUpperCase() + names[1].substring(0, 1).toUpperCase();
-
-    console.log(initials);
-
     const avatarImg = document.createElement("div");
     avatarImg.textContent = `${initials}`;
     avatarNode.appendChild(avatarImg);
