@@ -46,3 +46,27 @@
   height: 125px;
   margin-bottom: 8px;
 }
+
+.collapsible {
+  background-color: rgb(192, 182, 182);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 12px 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}

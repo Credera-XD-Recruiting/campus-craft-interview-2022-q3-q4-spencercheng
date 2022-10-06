@@ -25,8 +25,9 @@ const generateCardNode = (data) => {
   const location = clone.querySelector(".page-location");
   const authorName = clone.querySelector(".post-author-info .page-paragraph");
   const jobDesc = clone.querySelector(".post-author-info .page-micro");
-  const postNode = clone.querySelector(".post-content");
+  const postNode = clone.querySelector(".content");
   const avatarNode = clone.querySelector(".post-author-avatar");
+  const collapseNode = clone.querySelector(".collapsible");
 
   location.innerHTML = `${city}, ${state}`;
   publishDisplayDate.innerHTML = `${publishDate.split("T")[0]}`;
@@ -42,9 +43,34 @@ const generateCardNode = (data) => {
       `${authorFirstName} ${authorLastName}`
     );
     avatarNode.appendChild(avatarImg);
-  }
+  } else {
+    
+    var initials = authorFirstName.substring(0, 1).toUpperCase() + authorLastName.substring(0, 1).toUpperCase();
 
+    console.log(initials);
+  
+    const avatarImg = document.createElement("div");
+    avatarImg.textContent = `${initials}`;
+    avatarNode.appendChild(avatarImg);
+    avatarImg.setAttribute("style",  "text-align: center; font-size: 4vh; color: white; margin-top:3vh;")
+  
+  }
+  
+  togglePostContent(collapseNode);
+  
   return clone;
+};
+
+const togglePostContent = (collapseNode) => {
+  collapseNode.addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
 };
 
 /**
